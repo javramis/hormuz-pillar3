@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Nitrogen Cascade — Pillar 3 — Hormuz Vulnerability Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ivory:      #FBF9F4;
+  --beige:      #F0EBE0;
+  --beige-deep: #E6DECF;
+  --white:      #FFFEFB;
+  --slate:      #3A4A52;
+  --slate-soft: #4E5E66;
+  --terra:      #C97B5A;
+  --terra-deep: #9E4A33;
+  --sage:       #7A9471;
+  --bluegrey:   #6E8898;
+  --ink:        #33312E;
+  --text-mid:   #5C574E;
+  --text-mute:  #8A8275;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+  --max: 920px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); font-size: 17px; line-height: 1.75; color: var(--ink); background: var(--ivory); }
+
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(251,249,244,0.92); backdrop-filter: blur(10px);
+  padding: 0 2.5rem; display:flex; align-items:center; justify-content:space-between;
+  height: 50px; border-bottom: 1px solid rgba(58,74,82,0.12);
+}
+.nav-brand { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--slate); }
+.nav-links { display:flex; gap:1.75rem; }
+.nav-links a { font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color: var(--text-mute); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color: var(--terra-deep); }
+
+#hero { min-height: 92vh; background: linear-gradient(160deg, var(--beige) 0%, var(--ivory) 55%, var(--beige-deep) 100%);
+  display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:4.5rem; position:relative; overflow:hidden; }
+.hero-accent { position:absolute; inset:0; background:
+  radial-gradient(ellipse 70% 50% at 75% 25%, rgba(201,123,90,0.10) 0%, transparent 60%),
+  radial-gradient(ellipse 50% 60% at 15% 85%, rgba(122,148,113,0.10) 0%, transparent 55%); }
+.hero-content { position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 2.5rem; width:100%; }
+.hero-tag { font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--terra-deep); margin-bottom:1.75rem; display:flex; align-items:center; gap:1rem; }
+.hero-tag::after { content:''; flex:1; max-width:60px; height:1px; background:var(--terra); opacity:0.5; }
+.hero-h1 { font-family:var(--serif); font-size:clamp(3rem,8vw,6rem); font-weight:700; line-height:0.98; letter-spacing:-0.02em; color:var(--ink); margin-bottom:1rem; }
+.hero-h1 em { font-style:italic; color:var(--terra-deep); display:block; }
+.hero-sub { font-family:var(--serif); font-size:clamp(1.05rem,2vw,1.35rem); font-style:italic; color:var(--slate); margin-bottom:2.5rem; max-width:560px; }
+.hero-authors { font-size:13px; color:var(--text-mute); margin-bottom:3rem; }
+.hero-authors strong { color:var(--slate); font-weight:600; }
+.hero-stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(58,74,82,0.15); padding-top:2.25rem; gap:0; }
+.hstat { padding-right:2rem; }
+.hstat-n { font-family:var(--serif); font-size:2.6rem; font-weight:600; line-height:1; color:var(--terra-deep); }
+.hstat-l { font-size:12px; color:var(--text-mid); margin-top:0.5rem; line-height:1.4; }
+.scroll-hint { position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); z-index:1; display:flex; flex-direction:column; align-items:center; gap:6px; opacity:0.35; }
+.scroll-hint span { font-family:var(--mono); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--slate); }
+.scroll-hint-bar { width:1px; height:34px; background:linear-gradient(to bottom,var(--slate),transparent); animation:pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+.s-ivory { background:var(--ivory); }
+.s-beige { background:var(--beige); }
+.s-slate { background:var(--slate); }
+.s-white { background:var(--white); }
+.s-inner { max-width:var(--max); margin:0 auto; padding:5rem 2.5rem; }
+
+.eyebrow { font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1.1rem; display:flex; align-items:center; gap:0.75rem; color:var(--terra-deep); }
+.s-slate .eyebrow { color:var(--terra); }
+.eyebrow::before { content:''; width:20px; height:1px; background:currentColor; }
+
+h2 { font-family:var(--serif); font-size:clamp(1.8rem,4vw,2.7rem); font-weight:700; line-height:1.1; letter-spacing:-0.02em; margin-bottom:1.4rem; color:var(--ink); }
+.s-slate h2 { color:var(--white); }
+.rule { width:38px; height:2px; margin-bottom:1.8rem; background:var(--terra); }
+p { margin-bottom:1.2rem; max-width:700px; color:var(--text-mid); }
+.s-slate p { color:rgba(255,255,255,0.78); }
+.lead { font-size:1.13rem; line-height:1.7; margin-bottom:1.6rem; color:var(--ink); }
+.s-slate .lead { color:rgba(255,255,255,0.92); }
+strong { color:var(--ink); } .s-slate strong { color:#fff; }
+
+.fig { margin:2.5rem 0; }
+.fig img { width:100%; display:block; border-radius:4px; border:1px solid rgba(58,74,82,0.12); background:var(--ivory); }
+.fig-cap { font-size:12px; font-style:italic; margin-top:0.6rem; color:var(--text-mute); line-height:1.5; }
+.s-slate .fig-cap { color:rgba(255,255,255,0.5); }
+.fig-pair { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin:2.5rem 0; }
+.fig-pair img { width:100%; border-radius:4px; border:1px solid rgba(58,74,82,0.12); }
+
+.iframe-wrap { margin:2rem 0; border-radius:4px; overflow:hidden; border:1px solid rgba(58,74,82,0.14); box-shadow:0 2px 18px rgba(58,74,82,0.07); }
+.iframe-bar { background:var(--slate); padding:0.45rem 0.9rem; display:flex; align-items:center; gap:0.6rem; font-family:var(--mono); font-size:10px; letter-spacing:0.05em; color:rgba(255,255,255,0.6); }
+.dot { width:6px; height:6px; border-radius:50%; background:var(--sage); }
+.iframe-wrap iframe { width:100%; height:480px; border:none; display:block; background:var(--ivory); }
+
+.caveat { border-left:3px solid var(--bluegrey); padding:1rem 1.25rem; margin:2rem 0; background:rgba(110,136,152,0.06); border-radius:0 4px 4px 0; }
+.caveat p { font-size:14px; margin:0; color:var(--text-mid); }
+.s-slate .caveat { background:rgba(255,255,255,0.05); } .s-slate .caveat p { color:rgba(255,255,255,0.7); }
+
+.sc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2.5rem 0; }
+.sc { padding:1.5rem; border-radius:4px; border:1px solid rgba(58,74,82,0.12); background:var(--white); }
+.sc.crit { border-color:rgba(158,74,51,0.3); background:#FBF3EE; }
+.sc-n { font-family:var(--mono); font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-mute); margin-bottom:0.5rem; }
+.sc.crit .sc-n { color:var(--terra-deep); }
+.sc-t { font-family:var(--serif); font-size:1.05rem; font-weight:600; color:var(--ink); margin-bottom:0.5rem; line-height:1.3; }
+.sc-d { font-size:13px; color:var(--text-mid); line-height:1.55; }
+
+.findings { list-style:none; margin:2rem 0; }
+.finding { padding:1.5rem 0 1.5rem 1.5rem; border-bottom:1px solid rgba(255,255,255,0.12); position:relative; }
+.finding:first-child { border-top:1px solid rgba(255,255,255,0.12); }
+.finding::before { content:''; position:absolute; left:0; top:1.95rem; width:6px; height:6px; border-radius:50%; background:var(--terra); }
+.finding strong { display:block; font-family:var(--serif); font-size:1.1rem; font-style:italic; color:#fff; margin-bottom:0.35rem; }
+.finding p { color:rgba(255,255,255,0.7); margin:0; font-size:14.5px; }
+
+a.ext { font-family:var(--mono); font-size:12px; color:var(--terra-deep); text-decoration:none; border-bottom:1px solid rgba(201,123,90,0.35); padding-bottom:1px; }
+.s-slate a.ext { color:var(--terra); }
+footer { background:var(--slate); padding:3.5rem 2.5rem; }
+.foot-inner { max-width:var(--max); margin:0 auto; display:flex; justify-content:space-between; align-items:flex-end; }
+.foot-t { font-family:var(--serif); font-size:1.2rem; font-style:italic; color:#fff; margin-bottom:0.4rem; }
+.foot-m { font-size:12px; color:rgba(255,255,255,0.5); }
+@media (max-width:640px){ .sc-grid,.fig-pair,.hero-stats{grid-template-columns:1fr;gap:1.5rem} .nav-links{display:none} .foot-inner{flex-direction:column;gap:1.5rem;align-items:flex-start} }
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">The Nitrogen Cascade · Pillar 3</span>
+  <div class="nav-links">
+    <a href="#mechanism">Mechanism</a><a href="#producers">Producers</a><a href="#exposure">Exposure</a><a href="#cascade">Cascade</a><a href="#impact">Impact</a><a href="#jordan">Jordan</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Pillar 3 &middot; Food &amp; Fertilizer Extension &middot; June 2026</div>
+    <h1 class="hero-h1">The Nitrogen <em>Cascade</em></h1>
+    <p class="hero-sub">How a Strait of Hormuz closure travels from natural gas into the world's food system.</p>
+    <p class="hero-authors"><strong>James Maximillian Avramis</strong> &middot; Hormuz Vulnerability Index</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">~48%</div><div class="hstat-l">of India's nitrogen sourced from<br>strait-region Gulf producers</div></div>
+      <div class="hstat"><div class="hstat-n">3.5&times;</div><div class="hstat-l">urea price swing in the<br>2021&ndash;22 gas shock</div></div>
+      <div class="hstat"><div class="hstat-n">r = 0.74</div><div class="hstat-l">gas&ndash;urea price correlation,<br>2021&ndash;2024</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-hint-bar"></div></div>
+</section>
+
+<section id="mechanism" class="s-ivory">
+  <div class="s-inner">
+    <div class="eyebrow">The Mechanism</div>
+    <h2>Fertilizer is made out of natural gas</h2>
+    <div class="rule"></div>
+    <p class="lead">Nitrogen fertilizer is built from natural gas &mdash; the gas literally becomes the fertilizer. The chain runs <strong>gas &rarr; ammonia &rarr; nitrogen fertilizer &rarr; crops &rarr; food</strong>, and most of the cost of nitrogen fertilizer is gas. That is why nitrogen &mdash; not the mined nutrients like potash &mdash; is how a Hormuz shock reaches the food system.</p>
+    <p>A Hormuz closure does not cut the Gulf <em>off</em> from gas. The Gulf has its own gas and makes fertilizer on site. What the closure does is <strong>trap that fertilizer behind the strait</strong>, so it cannot reach the countries that depend on it. India's problem is not that nitrogen cannot be made &mdash; it is that Gulf-made nitrogen cannot get <em>out</em>. It is a transit problem: the same logic as the oil and LNG in Pillars 1&ndash;2, one step downstream.</p>
+  </div>
+</section>
+
+<section id="producers" class="s-beige">
+  <div class="s-inner">
+    <div class="eyebrow">Layer 1 &mdash; Sourcing</div>
+    <h2>Which producers does the world's food lean on?</h2>
+    <div class="rule"></div>
+    <p class="lead">Using the full bilateral nitrogen-trade network (UN Comtrade HS 3102, 2021&ndash;2024), we measure how much of each major agricultural importer's nitrogen comes from strait-region Gulf producers.</p>
+    <p>The Gulf sits at the core. India draws roughly <strong>48%</strong> of its nitrogen from strait-region producers; Bangladesh, South Africa, and Thailand lean on them even more heavily. These are real, route-based dependencies &mdash; the supply lines a Hormuz closure would cut.</p>
+    <div class="fig">
+      <img src="fig_gulf_dependence.png" alt="Gulf nitrogen dependence by major importer">
+      <span class="fig-cap">Share of nitrogen imports from strait-region Gulf producers, major agricultural importers. India highlighted.</span>
+    </div>
+  </div>
+</section>
+
+<section id="exposure" class="s-ivory">
+  <div class="s-inner">
+    <div class="eyebrow">Layer 2 &mdash; Exposure</div>
+    <h2>Exposure, mapped</h2>
+    <div class="rule"></div>
+    <p class="lead">Each country's strait-region-sourced share, scale-gated by absolute volume so that no-agriculture trade hubs don't dominate through tiny denominators &mdash; the same materiality logic used in Pillar 1.</p>
+    <div class="caveat">
+      <p><strong>A deliberate caveat on Oman.</strong> About 30% of India's nitrogen comes from Oman, whose ports face the Arabian Sea and so do not strictly transit the strait. We count Oman as <em>conflict-region</em> exposure &mdash; it holds Musandam, the strait's southern shore &mdash; but the headline depends on it: India is ~48% Gulf-sourced with Oman, ~17% on strictly in-strait producers. We flag this openly rather than bury it.</p>
+    </div>
+    <div class="iframe-wrap">
+      <div class="iframe-bar"><div class="dot"></div>Interactive &mdash; hover any country for exposure, severity, and Gulf-sourced share</div>
+      <iframe src="pillar3_interactive_buffer_map.html" title="Exposure &amp; Buffer Map" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="cascade" class="s-slate">
+  <div class="s-inner">
+    <div class="eyebrow">The Cascade</div>
+    <h2>Where the nitrogen goes</h2>
+    <div class="rule"></div>
+    <p class="lead">The flow traces nitrogen from strait-region producers out to their destinations, weighted by volume. The Gulf radiates fertilizer to India, the Americas, Southeast Asia, and East Africa &mdash; the world's food riding on a single chokepoint.</p>
+    <div class="fig">
+      <img src="fig_cascade.png" alt="Nitrogen cascade flow map">
+      <span class="fig-cap">Strait-region Gulf producers (terracotta) and their largest nitrogen export flows, 2021&ndash;2024.</span>
+    </div>
+  </div>
+</section>
+
+<section id="impact" class="s-ivory">
+  <div class="s-inner">
+    <div class="eyebrow">The Impact &mdash; Illustrative Scenario</div>
+    <h2>Who actually loses food?</h2>
+    <div class="rule"></div>
+    <p class="lead">This layer is an <strong>illustrative scenario, not a prediction.</strong> Trade data shows exposure; it cannot forecast yield loss without agronomic modeling we don't have. The bounded what-if: <em>if</em> a closure removed strait-region nitrogen and that loss reached the field proportionally, what is the <em>shape</em> of who would be hit?</p>
+    <p>The answer is <strong>regressive.</strong> Because the nitrogen-yield response curve has diminishing returns (calibrated to the 150&ndash;200 kg N/ha sustainable range; Ludemann et al., <em>Nature Food</em> 2021), the same proportional cut barely dents a high-input country and devastates a low-input one. The most <em>tonnage</em> sits in large producers; the most <em>devastating</em> losses fall on low-input, strait-sourced countries least able to absorb them.</p>
+    <div class="fig-pair">
+      <div><img src="fig_impact_tonnes.png" alt="Tonnes at risk"><span class="fig-cap">Volume: cereal tonnes at risk &mdash; large producers (India, US, Brazil) dominate.</span></div>
+      <div><img src="fig_impact_yield.png" alt="Yield loss percent"><span class="fig-cap">Severity: % yield loss &mdash; low-input countries (Mozambique, Sudan, South Africa) hit hardest.</span></div>
+    </div>
+    <p>That contrast is the finding: the same shock, opposite geographies. The two channels below converge on the same victims.</p>
+    <div class="sc-grid">
+      <div class="sc"><div class="sc-n">Physical channel</div><div class="sc-t">Less nitrogen reaches the field</div><div class="sc-d">Net import dependence &times; strait-region share &times; the response curve at each country's real application rate &rarr; the regressive yield-loss shape.</div></div>
+      <div class="sc"><div class="sc-n">Economic channel</div><div class="sc-t">What remains costs far more</div><div class="sc-d">In 2021&ndash;22 a partial gas shock ran urea up ~3.5&times; (gas&ndash;urea r = 0.74). A Hormuz closure is a larger gas shock.</div></div>
+      <div class="sc crit"><div class="sc-n">Where it converges</div><div class="sc-t">Cannot absorb the shock</div><div class="sc-d">High exposure <em>and</em> existing hunger (undernourishment &ge;10%) &mdash; not wealthy importers who can buy through a price spike.</div></div>
+    </div>
+    <div class="iframe-wrap">
+      <div class="iframe-bar"><div class="dot"></div>Interactive &mdash; who truly cannot absorb the shock (exposure &times; existing food insecurity)</div>
+      <iframe src="pillar3_impact_cannot_absorb_map.html" title="Who Cannot Absorb the Shock" loading="lazy"></iframe>
+    </div>
+    <div class="caveat">
+      <p><strong>Model boundary.</strong> This is a nitrogen-stress model &mdash; it assumes nitrogen is the binding yield constraint. Where something else binds first (Australia's dryland wheat is water-limited) it overstates impact. We cap every country at "yield loss &le; nitrogen removed" and flag the limitation rather than bolt on water data, which is not on the Hormuz causal path.</p>
+    </div>
+  </div>
+</section>
+
+<section id="jordan" class="s-slate">
+  <div class="s-inner">
+    <div class="eyebrow">Case Study</div>
+    <h2>Jordan: hit on three fronts</h2>
+    <div class="rule"></div>
+    <p class="lead">Jordan surfaced in the combined index as <em>Acute Dependence</em> &mdash; not because it is large, but because it is structurally cornered. A continued closure hits it on three fronts at once, with no domestic buffer on any.</p>
+    <div class="fig">
+      <img src="fig_jordan_3front.png" alt="Jordan three-front exposure">
+      <span class="fig-cap">Jordan's exposure across the three pillars (higher = more exposed). Pillar 2 shown as substitution gap.</span>
+    </div>
+    <ul class="findings">
+      <li class="finding"><strong>Energy &mdash; ~100% Gulf crude, near-zero self-sufficiency</strong><p>All of Jordan's crude routes through the Gulf; LNG supply is near-single-source (HHI 0.97); domestic energy production is essentially nil.</p></li>
+      <li class="finding"><strong>Substitution &mdash; little capacity to reroute</strong><p>Limited means to substitute away from strait-routed supply.</p></li>
+      <li class="finding"><strong>Food &amp; fertilizer &mdash; import-dependent and a transmission node</strong><p>Jordan imports ~100% of its cereals, draws ~40% of its nitrogen from the Gulf, and re-exports nitrogen onward &mdash; chiefly to India. It is both exposed and a node in the regional food-security network.</p></li>
+    </ul>
+    <p>That last role matters most for a food-systems lens: Jordan is not just an energy importer but a <strong>transmission point</strong> in the cascade &mdash; what happens to Jordan ripples onward to the countries it supplies.</p>
+  </div>
+</section>
+
+<section class="s-beige">
+  <div class="s-inner">
+    <div class="eyebrow">Data &amp; Methods</div>
+    <h2>Open, reproducible, honest about its edges</h2>
+    <div class="rule"></div>
+    <p>Built on the same data spine and methodological grammar as Pillars 1&ndash;2: bilateral Comtrade flows, min-max normalization, a volume scale-gate ported from Pillar 1's materiality logic, and independence checks between axes.</p>
+    <p style="font-size:14px;color:var(--text-mute)"><strong style="color:var(--ink)">Data sources:</strong> UN Comtrade HS 3102 &middot; FAOSTAT (Fertilizers by Nutrient, Crop Production, Food Security Indicators) &middot; World Bank Pink Sheet prices &middot; Ludemann et al., Nature Food 2021 &middot; Natural Earth</p>
+    <p style="font-size:14px;color:var(--text-mute)"><strong style="color:var(--ink)">Honest limitations:</strong> the impact layer is an illustrative scenario, not an estimate; the Oman / strait-region framing carries the India headline (48% vs 17% without Oman); producer gas-dependence is proxied by nutrient type; the model assumes nitrogen is the binding yield constraint.</p>
+    <p style="font-size:14px;color:var(--text-mute)"><strong style="color:var(--ink)">AI disclosure:</strong> Claude (Anthropic) was used for brainstorming, drafting, code debugging, and writing review. All outputs were reviewed, revised, and verified by the author.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div><div class="foot-t">The Nitrogen Cascade &mdash; Pillar 3</div>
+    <div class="foot-m">James Maximillian Avramis &middot; Hormuz Vulnerability Index &middot; UC San Diego &middot; June 2026</div></div>
+    <a class="ext" href="https://github.com/nlotfi-web/hormuz-vulnerability-index" target="_blank" style="font-size:11px">github &#8599;</a>
+  </div>
+</footer>
+</body>
+</html>
